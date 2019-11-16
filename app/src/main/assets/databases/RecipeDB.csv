@@ -1,0 +1,16 @@
+_ID,_Recipe_Name,_Main_Ingredient_1,_Cook_Time,_Spicy,_Website
+1,Last Minute Chicken,Chicken,20,Yes,https://iwashyoudry.com/last-minute-chicken-recipe/
+2,Parmesan Spring Chicken,Chicken,15,No,https://www.bbcgoodfood.com/recipes/parmesan-spring-chicken
+3,Quick Chicken Chasseur,Chicken,15,No,https://www.bbcgoodfood.com/recipes/quick-chicken-chasseur
+4,Chicken Stuffed with Herby Mascarpone,Chicken,25,No,https://www.bbcgoodfood.com/recipes/chicken-stuffed-herby-mascarpone
+5,Easy Teriyaki Chicken,Chicken,20,No,https://www.bbcgoodfood.com/recipes/easy-teriyaki-chicken
+6,Greek Tortellini Skillet,Beef,30,No,https://www.tasteofhome.com/recipes/greek-tortellini-skillet/
+7,Beef Broccoli Stir Fry,Beef,25,No,https://www.tasteofhome.com/recipes/beef-broccoli-stir-fry/
+8,Beef Tenderloin in Mushroom Sauce,Beef,25,No,https://www.tasteofhome.com/recipes/beef-tenderloin-in-mushroom-sauce/
+9,Aloha Chili,Beef,30,Yes,https://www.tasteofhome.com/recipes/aloha-chili/
+10,Speedy Shepherd's Pie,Beef,20,Yes,https://www.tasteofhome.com/recipes/speedy-shepherd-s-pie/
+11,Crispy Pork Cutlets with Fennel Salad,Pork,20,No,https://www.bonappetit.com/recipe/pork-cutlets-with-fennel-cherries-and-basil-salad
+12,Silky Pork and Cumin Stew,Pork,30,Yes,https://www.bonappetit.com/recipe/silky-pork-and-cumin-stew
+13,Pan Roasted Brined Pork Chop,Pork,30,No,https://www.bonappetit.com/recipe/pan-roasted-brined-pork-chop
+14,Party Ready Pork Roast,Pork,15,No,https://www.bonappetit.com/recipe/party-ready-pork-roast
+15,Pork Carnitas,Pork,10,Yes,https://www.bonappetit.com/recipe/double-pork-carnitas
