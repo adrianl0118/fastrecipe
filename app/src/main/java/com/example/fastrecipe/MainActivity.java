@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,12 +17,32 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String mainingredient;
+    private int time;
+    private String spicy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Dropdown menus for user input
+        Spinner i_spinner = (Spinner) findViewById(R.id.i_spinner);
+        Spinner t_spinner = (Spinner) findViewById(R.id.t_spinner);
+
+        // Set content of spinners
+        ArrayAdapter<CharSequence> i_adapter = ArrayAdapter.createFromResource(this,
+                R.array.main_ingredient, android.R.layout.simple_spinner_item);
+        i_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        i_spinner.setAdapter(i_adapter);
+        ArrayAdapter<CharSequence> t_adapter = ArrayAdapter.createFromResource(this,
+                R.array.cook_time, android.R.layout.simple_spinner_item);
+        t_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        t_spinner.setAdapter(t_adapter);
+
+        //Read recipe data to Array list
         readRecipeData();
+
     }
 
     //data repository will be an array of Recipe objects
@@ -72,5 +94,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    public void filter(String ingredient, int cooktime, String spicy){
+
     }
 }

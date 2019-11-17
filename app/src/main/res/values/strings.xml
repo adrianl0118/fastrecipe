@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">FastRecipe</string>
+    <string-array name="main_ingredient">
+        <item>Chicken</item>
+        <item>Beef</item>
+        <item>Pork</item>
+        <item>Lamb</item>
+    </string-array>
+    <integer-array name="cook_time">
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+    </integer-array>
 </resources>
