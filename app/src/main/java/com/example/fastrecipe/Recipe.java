@@ -1,5 +1,7 @@
 package com.example.fastrecipe;
 
+//Class for the records of our recipe ArrayList, to be preloaded at runtime from a CSV file
+//This enables us to store a motley assortment of datatypes in the ArrayList
 class Recipe {
     private String recipe_name;
     private String main_ingredient;
@@ -56,5 +58,9 @@ class Recipe {
                 ", spicy='" + spicy + '\'' +
                 ", website='" + website + '\'' +
                 '}';
+    }
+
+    public String toRecord(){
+        return recipe_name + " (" + Integer.toString(cook_time) + ")" + "\n" + website + "\n";
     }
 }

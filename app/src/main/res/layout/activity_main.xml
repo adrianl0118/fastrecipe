@@ -60,6 +60,7 @@
         android:layout_height="366dp"
         android:text="Happy Cooking!"
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:scrollbars = "vertical"/>
 
 </LinearLayout>

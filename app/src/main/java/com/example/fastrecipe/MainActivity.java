@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
         readRecipeData();
 
         //The rest of the happenings occur as the "Find Recipes" button on the Main activity's GUI is clicked
-        //as shown in the xml file.
+        //as shown in the layout xml file.
     }
 
     private void readRecipeData(){
-        InputStream is = getResources().openRawResource(R.raw.RecipeDB);
+        InputStream is = getResources().openRawResource(R.raw.recipedb);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, Charset.forName("UTF-8"))
         );
@@ -63,48 +63,61 @@ public class MainActivity extends AppCompatActivity {
         String line = "";
 
         //While reading the file line by line
-        while(true){
-            try {
-                //Step over headers
-                reader.readLine();
+        try {
+            //Step over headers
+            reader.readLine();
 
-                if (!((line = reader.readLine()) != null)){
-                    Log.d("MainActivity","Line:"+line);
+            if ((line = reader.readLine()) != null){
+                Log.d("MainActivity","Line:"+line);
 
-                    //Split by commas
-                    String[] tokens = line.split(",");
+                //Split by commas
+                String[] tokens = line.split(",");
 
-
-                    //Read the data
-                    Recipe r1 = new Recipe();
-                    r1.setRecipe_name(tokens[0]);
-                    r1.setMain_ingredient(tokens[1]);
-                    if(tokens[2].length()>0){      //don't process blank int, string ok
-                        r1.setCook_time(Integer.parseInt(tokens[2]));
-                    } else {
-                        r1.setCook_time(0);
-                    }
-                    r1.setSpicy(tokens[3]);
-                    if(tokens.length >= 4){       //don't process if last entry is blank (won't happen)
-                        r1.setWebsite(tokens[4]);
-                    }
-                    recipes.add(r1);
-
-                    Log.d("MainActivity","Just created: "+r1);
+                //Read the data
+                Recipe r1 = new Recipe();
+                r1.setRecipe_name(tokens[0]);
+                r1.setMain_ingredient(tokens[1]);
+                if(tokens[2].length()>0){      //don't process blank int, string ok
+                    r1.setCook_time(Integer.parseInt(tokens[2]));
+                } else {
+                    r1.setCook_time(0);
                 }
-            } catch (IOException e) {
+                r1.setSpicy(tokens[3]);
+                if(tokens.length >= 4){       //don't process if last entry is blank (won't happen)
+                    r1.setWebsite(tokens[4]);
+                }
+                recipes.add(r1);
 
-                //If there is an error reading the line, throw exception and print msg to see where error is
-                Log.d("MainActivity", "Error reading data file on line " + line, e);
-                e.printStackTrace();
+                Log.d("MainActivity","Just created: "+r1);
             }
+        } catch (IOException e) {
 
+            //If there is an error reading the line, throw exception and print msg to see where error is
+            Log.d("MainActivity", "Error reading data file on line " + line, e);
+            e.printStackTrace();
         }
+
     }
 
     //method set to on-click of "get recipes" button in xml
     public void getRecipes(View view){
         String ingr = i_spinner.getSelectedItem().toString();
         int time = (int) t_spinner.getSelectedItem();
+
+        String recipelist = "";
+
+        //Cycling through all available recipes in the Arraylist "database"
+        for (int i = 0; i < recipes.size(); i++){
+
+            //if the ingredient and cook time of the record matches what was selected in spinners
+            if (recipes.get(i).getMain_ingredient() == ingr && (recipes.get(i).getCook_time() >= (time - 5) && recipes.get(i).getCook_time() <= (time + 5))) {
+
+                //add its record form to the resultant string
+                recipelist+=recipes.get(i).toRecord();
+            }
+        }
+
+        //display everything in the show text view
+        show.setText(recipelist);
     }
 }
