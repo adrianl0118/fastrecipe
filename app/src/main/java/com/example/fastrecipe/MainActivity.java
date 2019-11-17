@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         t_spinner = (Spinner) findViewById(R.id.t_spinner);
         show = (TextView) findViewById(R.id.show);
 
-        // Set dropdown content of spinners - may be unecessary
+        //Set dropdown content of spinners - may be unecessary
         ArrayAdapter<CharSequence> i_adapter = ArrayAdapter.createFromResource(this,
                 R.array.main_ingredient, android.R.layout.simple_spinner_item);
         i_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

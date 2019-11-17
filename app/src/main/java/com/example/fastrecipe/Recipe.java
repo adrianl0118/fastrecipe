@@ -61,6 +61,6 @@ class Recipe {
     }
 
     public String toRecord(){
-        return recipe_name + " (" + Integer.toString(cook_time) + ")" + "\n" + website + "\n";
+        return recipe_name + " (" + cook_time + ")" + "\n" + website + "\n";
     }
 }

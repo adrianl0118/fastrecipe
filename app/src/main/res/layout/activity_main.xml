@@ -11,8 +11,8 @@
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16"
-        android:layout_marginBottom="8"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:lineSpacingExtra="8sp"
@@ -24,15 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:dropDownWidth="match_parent"
-        android:entries="@array/main_ingredient"
-        android:prompt="What will we cook?"/>
+        android:entries="@array/main_ingredient" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16"
-        android:layout_marginBottom="8"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Specify Cook Time (+-5 min)"
@@ -42,15 +41,14 @@
         android:id="@+id/t_spinner"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginBottom="16"
-        android:entries="@array/cook_time"
-        android:prompt="How long?" />
+        android:layout_marginBottom="16dp"
+        android:entries="@array/cook_time" />
 
     <Button
         android:id="@+id/gobtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48"
+        android:layout_marginBottom="48dp"
         android:onClick="getRecipes"
         android:text="Find Recipes" />
 
