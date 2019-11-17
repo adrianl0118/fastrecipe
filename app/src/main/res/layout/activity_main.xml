@@ -22,7 +22,10 @@
     <Spinner
         android:id="@+id/i_spinner"
         android:layout_width="match_parent"
-        android:layout_height="42dp" />
+        android:layout_height="42dp"
+        android:dropDownWidth="match_parent"
+        android:entries="@array/main_ingredient"
+        android:prompt="What will we cook?"/>
 
     <EditText
         android:id="@+id/editText2"
@@ -32,12 +35,31 @@
         android:layout_marginBottom="8"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Specify Cook Time"
+        android:text="Specify Cook Time (+-5 min)"
         android:textAlignment="center" />
 
     <Spinner
         android:id="@+id/t_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="42dp"
+        android:layout_marginBottom="16"
+        android:entries="@array/cook_time"
+        android:prompt="How long?" />
+
+    <Button
+        android:id="@+id/gobtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48"
+        android:onClick="getRecipes"
+        android:text="Find Recipes" />
+
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="366dp"
+        android:text="Happy Cooking!"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
 </LinearLayout>

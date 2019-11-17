@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,20 +19,25 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String mainingredient;
-    private int time;
-    private String spicy;
+    //data repository will be an array of Recipe objects
+    private List<Recipe> recipes = new ArrayList<>();
+
+    //Dropdown menus for user input and textview for showing results
+    private Spinner i_spinner;
+    private Spinner t_spinner;
+    private TextView show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Dropdown menus for user input
-        Spinner i_spinner = (Spinner) findViewById(R.id.i_spinner);
-        Spinner t_spinner = (Spinner) findViewById(R.id.t_spinner);
+        //Link spinners and textviews to xml
+        i_spinner = (Spinner) findViewById(R.id.i_spinner);
+        t_spinner = (Spinner) findViewById(R.id.t_spinner);
+        show = (TextView) findViewById(R.id.show);
 
-        // Set content of spinners
+        // Set dropdown content of spinners - may be unecessary
         ArrayAdapter<CharSequence> i_adapter = ArrayAdapter.createFromResource(this,
                 R.array.main_ingredient, android.R.layout.simple_spinner_item);
         i_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -43,10 +50,9 @@ public class MainActivity extends AppCompatActivity {
         //Read recipe data to Array list
         readRecipeData();
 
+        //The rest of the happenings occur as the "Find Recipes" button on the Main activity's GUI is clicked
+        //as shown in the xml file.
     }
-
-    //data repository will be an array of Recipe objects
-    private List<Recipe> recipes = new ArrayList<>();
 
     private void readRecipeData(){
         InputStream is = getResources().openRawResource(R.raw.RecipeDB);
@@ -96,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void filter(String ingredient, int cooktime, String spicy){
-
+    //method set to on-click of "get recipes" button in xml
+    public void getRecipes(View view){
+        String ingr = i_spinner.getSelectedItem().toString();
+        int time = (int) t_spinner.getSelectedItem();
     }
 }
