@@ -1,5 +1,13 @@
 package com.example.fastrecipe;
 
+import android.content.Context;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.Toast;
+
 //Class for the records of our recipe ArrayList, to be preloaded at runtime from a CSV file
 //This enables us to store a motley assortment of datatypes in the ArrayList
 class Recipe {
@@ -60,7 +68,39 @@ class Recipe {
                 '}';
     }
 
-    public String toRecord(){
-        return recipe_name + " (" + cook_time + ")" + "\n" + website + "\n";
+    public SpannableString toRecord(){
+
+        //Return a Spannablestring with recipe information (presentation format) and a hyperlink URL
+        //Use a Spannablestring in which segments can be made into URLs
+
+        SpannableString r_info = new SpannableString(recipe_name + " (" + cook_time + " minutes)" + "\n" + website + "\n");
+
+        ClickableSpan clickableTerms = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+
+                //Show toast, transient message to the viewer when the link is clicked
+                Toast.makeText(this, "YEAHHH!", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(true);
+            }
+        };
+
+        //calculate start and end position of URL, set into Spannablestring
+        int temp = 0;
+        if (getCook_time() < 10){
+            temp = 1;
+        } else {
+            temp = 2;
+        }
+        int startpos = recipe_name.length()+ 2 + temp + 11;
+        int endpos = startpos+website.length();
+
+        r_info.setSpan(clickableTerms, startpos, endpos, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        return r_info;
     }
 }

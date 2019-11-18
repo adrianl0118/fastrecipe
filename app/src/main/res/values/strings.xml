@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">FastRecipe</string>
+    <string name="happy_cooking">Happy Cooking!</string>
+    <string name="find_recipes">Find Recipes</string>
+    <string name="specify_time">Specify Cook Time (+-5 min)</string>
+    <string name="specify_ingredient">Specify Main Ingredient:</string>
 
 
 </resources>

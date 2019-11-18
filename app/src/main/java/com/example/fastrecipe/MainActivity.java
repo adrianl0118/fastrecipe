@@ -2,7 +2,10 @@ package com.example.fastrecipe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,11 +45,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> i_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,s1);
         i_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         i_spinner.setAdapter(i_adapter);
+        i_spinner.setPrompt("Please select");
 
         Integer[] s2 = new Integer[]{5,10,15,20,25};
         ArrayAdapter<Integer> t_adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, s2);
         t_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         t_spinner.setAdapter(t_adapter);
+        t_spinner.setPrompt("Please select");
 
         //Read recipe data to Array list
         readRecipeData();
@@ -100,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //method set to on-click of "get recipes" button in xml
+    //method set to on-click of "get recipes" button in xml -- Spannable strings for URLs
     public void getRecipes(View view){
         String ingr = i_spinner.getSelectedItem().toString();
         int time = (int) t_spinner.getSelectedItem();
 
-        String recipelist = "";
+        SpannableStringBuilder recipelist = new SpannableStringBuilder("");
 
         //Cycling through all available recipes in the Arraylist "database"
         for (int i = 0; i < recipes.size(); i++){
@@ -114,12 +119,17 @@ public class MainActivity extends AppCompatActivity {
             if (recipes.get(i).getMain_ingredient().equals(ingr) && recipes.get(i).getCook_time() >= (time - 5) && recipes.get(i).getCook_time() <= (time + 5)) {
 
                 //add its record form to the resultant string
-                recipelist+=recipes.get(i).toRecord();
+                recipelist.append(recipes.get(i).toRecord());
 
+                //double space for ease of reading
+                recipelist.append("\n");
+                recipelist.append("\n");
             }
         }
 
-        //display everything in the show text view
+        //display everything in the show text view and set URLs to active
         show.setText(recipelist);
+        show.setMovementMethod(LinkMovementMethod.getInstance());
+        show.setHighlightColor(Color.TRANSPARENT);
     }
 }
