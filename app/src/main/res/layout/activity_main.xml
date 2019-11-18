@@ -23,8 +23,7 @@
         android:id="@+id/i_spinner"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:dropDownWidth="match_parent"
-        android:entries="@array/main_ingredient" />
+        android:dropDownWidth="match_parent" />
 
     <EditText
         android:id="@+id/editText2"
@@ -41,8 +40,7 @@
         android:id="@+id/t_spinner"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginBottom="16dp"
-        android:entries="@array/cook_time" />
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/gobtn"

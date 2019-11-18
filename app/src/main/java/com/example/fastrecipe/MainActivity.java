@@ -38,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
         show = (TextView) findViewById(R.id.show);
 
         //Set dropdown content of spinners - may be unecessary
-        ArrayAdapter<CharSequence> i_adapter = ArrayAdapter.createFromResource(this,
-                R.array.main_ingredient, android.R.layout.simple_spinner_item);
+        String[] s1 = new String[]{"Chicken","Beef","Pork"};
+        ArrayAdapter<String> i_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,s1);
         i_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         i_spinner.setAdapter(i_adapter);
-        ArrayAdapter<CharSequence> t_adapter = ArrayAdapter.createFromResource(this,
-                R.array.cook_time, android.R.layout.simple_spinner_item);
+
+        Integer[] s2 = new Integer[]{5,10,15,20,25};
+        ArrayAdapter<Integer> t_adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, s2);
         t_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         t_spinner.setAdapter(t_adapter);
 
