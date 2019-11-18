@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             //Step over headers
             reader.readLine();
 
-            if ((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null){
                 Log.d("MainActivity","Line:"+line);
 
                 //Split by commas
@@ -111,10 +111,11 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < recipes.size(); i++){
 
             //if the ingredient and cook time of the record matches what was selected in spinners
-            if (recipes.get(i).getMain_ingredient() == ingr && (recipes.get(i).getCook_time() >= (time - 5) && recipes.get(i).getCook_time() <= (time + 5))) {
+            if (recipes.get(i).getMain_ingredient().equals(ingr) && recipes.get(i).getCook_time() >= (time - 5) && recipes.get(i).getCook_time() <= (time + 5)) {
 
                 //add its record form to the resultant string
                 recipelist+=recipes.get(i).toRecord();
+
             }
         }
 
