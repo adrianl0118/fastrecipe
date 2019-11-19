@@ -42,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         //Set dropdown content of spinners - may be unecessary
         String[] s1 = new String[]{"Chicken","Beef","Pork"};
-        ArrayAdapter<String> i_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,s1);
-        i_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> i_adapter = new ArrayAdapter<String>(this,R.layout.spinner_item,s1);
+        i_adapter.setDropDownViewResource(R.layout.spinner_item);
         i_spinner.setAdapter(i_adapter);
         i_spinner.setPrompt("Please select");
 
         Integer[] s2 = new Integer[]{5,10,15,20,25};
-        ArrayAdapter<Integer> t_adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, s2);
-        t_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<Integer> t_adapter = new ArrayAdapter<Integer>(this,R.layout.spinner_item, s2);
+        t_adapter.setDropDownViewResource(R.layout.spinner_item);
         t_spinner.setAdapter(t_adapter);
         t_spinner.setPrompt("Please select");
 

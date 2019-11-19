@@ -17,15 +17,17 @@
         android:inputType="textPersonName"
         android:lineSpacingExtra="8sp"
         android:text="@string/specify_ingredient"
-        android:textAlignment="center"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:paddingLeft="12dp"/>
 
     <Spinner
         android:id="@+id/i_spinner"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:dropDownWidth="match_parent" />
+        android:dropDownWidth="match_parent"
+        android:textAlignment="center"
+        android:paddingLeft="12dp"/>
 
     <TextView
         android:id="@+id/editText2"
@@ -36,15 +38,17 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/specify_time"
-        android:textAlignment="center"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:paddingLeft="12dp"/>
 
     <Spinner
         android:id="@+id/t_spinner"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textAlignment="center"
+        android:paddingLeft="12dp"/>
 
     <Button
         android:id="@+id/gobtn"
