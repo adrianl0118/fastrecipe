@@ -22,8 +22,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    //data repository will be an array of Recipe objects
-    private List<Recipe> recipes = new ArrayList<>();
+    //data repository will be an array of Recipe objects  (Unused)
+    //private List<Recipe> recipes = new ArrayList<>();
 
     //Dropdown menus for user input and textview for showing results
     private Spinner i_spinner;
@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
         String line = "";
 
+        //This DBHandler does the loading into a SQL server rather than ArrayList
+        RecipeDBHandler recipes = new RecipeDBHandler(this, null, null, 1);
+
         //While reading the file line by line
         try {
             //Step over headers
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 if(tokens.length >= 4){       //don't process if last entry is blank (won't happen)
                     r1.setWebsite(tokens[4]);
                 }
-                recipes.add(r1);
+                recipes.addHandler(r1);
 
                 Log.d("MainActivity","Just created: "+r1);
             }
@@ -108,30 +111,11 @@ public class MainActivity extends AppCompatActivity {
     //method set to on-click of "get recipes" button in xml -- Spannable strings for URLs
     public void getRecipes(View view){
 
-        //Get the desired ingredient and cook time from the two spinners
-        String ingr = i_spinner.getSelectedItem().toString();
-        int time = (int) t_spinner.getSelectedItem();
+        //display text (loadHandler()) does all of the complex spannable string assembly in RecipeDBHandler.class
+        RecipeDBHandler recipes = new RecipeDBHandler(this, null, null, 1);
+        show.setText(recipes.loadHandler());
 
-        //Create a spannablestring (linkable) to be output to the show textview
-        SpannableStringBuilder recipelist = new SpannableStringBuilder("");
-
-        //Cycling through all available recipes in the Arraylist "database"
-        for (int i = 0; i < recipes.size(); i++){
-
-            //if the ingredient and cook time of the record matches what was selected in spinners
-            if (recipes.get(i).getMain_ingredient().equals(ingr) && recipes.get(i).getCook_time() >= (time - 5) && recipes.get(i).getCook_time() <= (time + 5)) {
-
-                //add its record form to the spannable string
-                recipelist.append(recipes.get(i).toRecord());
-
-                //double space for ease of reading
-                recipelist.append("\n");
-                recipelist.append("\n");
-            }
-        }
-
-        //display everything in the show text view and set URLs to active
-        show.setText(recipelist);
+        //set URLs to active
         show.setMovementMethod(LinkMovementMethod.getInstance());
         show.setHighlightColor(Color.TRANSPARENT);
     }

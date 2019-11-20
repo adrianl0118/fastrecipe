@@ -78,7 +78,7 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
     }
 
     //show a datapoint
-    public SpannableString loadHandler() {
+    public SpannableStringBuilder loadHandler() {
 
         //the string where the data will be captured
         SpannableStringBuilder result = new SpannableStringBuilder("");
