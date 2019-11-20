@@ -72,12 +72,17 @@ class Recipe {
                 '}';
     }
 
+    //This method would be called if the recipe data was read into a runtime data structure like an arraylist
+    //it is called on Recipe objects and builds a presentable URL-encoded Spannable String
+
+    //However, in this version the RecipeDBHandler will execute both the querying and the presentation of data
     public SpannableString toRecord(){
 
         //Return a Spannablestring with recipe information (presentation format) and a hyperlink URL
         //Use a Spannablestring in which segments can be made into URLs
 
-        SpannableString r_info = new SpannableString(recipe_name + " (" + cook_time + " minutes)" + "\n" + website + "\n");
+        SpannableString r_info = new SpannableString(recipe_name + " (" + cook_time + " minutes)" +
+                "\n" + website + "\n");
 
         ClickableSpan clickableTerms = new ClickableSpan() {
             @Override

@@ -107,9 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
     //method set to on-click of "get recipes" button in xml -- Spannable strings for URLs
     public void getRecipes(View view){
+
+        //Get the desired ingredient and cook time from the two spinners
         String ingr = i_spinner.getSelectedItem().toString();
         int time = (int) t_spinner.getSelectedItem();
 
+        //Create a spannablestring (linkable) to be output to the show textview
         SpannableStringBuilder recipelist = new SpannableStringBuilder("");
 
         //Cycling through all available recipes in the Arraylist "database"
@@ -118,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             //if the ingredient and cook time of the record matches what was selected in spinners
             if (recipes.get(i).getMain_ingredient().equals(ingr) && recipes.get(i).getCook_time() >= (time - 5) && recipes.get(i).getCook_time() <= (time + 5)) {
 
-                //add its record form to the resultant string
+                //add its record form to the spannable string
                 recipelist.append(recipes.get(i).toRecord());
 
                 //double space for ease of reading
