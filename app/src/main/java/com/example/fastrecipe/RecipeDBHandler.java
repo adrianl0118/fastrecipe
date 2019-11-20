@@ -22,11 +22,11 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "RecipeDB.db";
     public static final String TABLE_NAME = "Recipes";
-    public static final String COLUMN_RECIPENAME = "_Recipe_Name";
-    public static final String COLUMN_MAININGREDIENT = "_Main_Ingredient_1";
-    public static final String COLUMN_COOKTIME = "_Cook_Time";
-    public static final String COLUMN_SPICY = "_Spicy";
-    public static final String COLUMN_WEBSITE = "_Website";
+    public static final String COLUMN_RECIPENAME = "Recipe_Name";
+    public static final String COLUMN_MAININGREDIENT = "Main_Ingredient_1";
+    public static final String COLUMN_COOKTIME = "Cook_Time";
+    public static final String COLUMN_SPICY = "Spicy";
+    public static final String COLUMN_WEBSITE = "Website";
 
 
     //Constructor
