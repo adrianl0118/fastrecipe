@@ -42,6 +42,7 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         //String's name is always CREATE_TABLE and it also starts with this declaration
         // TABLE_NAME (COLUMN_ID [Data Type + Primary Key AutoincreasedID], COLUMN_NAME [Text],...etc.)
         //               all columnname + datatype go into the declaration above with commas in between
+        //table must start with an autoincremented integer primary key
 
         //Note to self: may need to add a primary key integer column at the front
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_KEY + " INTEGER PRIMARY KEY " +
@@ -87,6 +88,7 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         SpannableStringBuilder result = new SpannableStringBuilder("");
 
         //table name identifier string to feed into the SQLiteDatabase query
+        //THIS STATEMENT NEEDS TO BE UPDATED TO QUERY    eg    String query = "Select * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = " + "'" + studentname + "'"
         String query = "Select*FROM " + TABLE_NAME;
 
         //SQLiteDatabase object (writable DB) will query based on the table name identifier

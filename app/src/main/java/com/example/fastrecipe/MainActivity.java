@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Read the data
                 Recipe r1 = new Recipe();
+                r1.setKey(Integer.parseInt(tokens[0]));
                 r1.setRecipe_name(tokens[1]);
                 r1.setMain_ingredient(tokens[2]);
                 if(tokens[3].length()>0){      //don't process blank int, string ok
