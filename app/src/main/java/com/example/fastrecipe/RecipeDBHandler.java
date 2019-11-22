@@ -22,11 +22,13 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "RecipeDB.db";
     public static final String TABLE_NAME = "Recipes";
-    public static final String COLUMN_RECIPENAME = "Recipe_Name";
-    public static final String COLUMN_MAININGREDIENT = "Main_Ingredient_1";
-    public static final String COLUMN_COOKTIME = "Cook_Time";
-    public static final String COLUMN_SPICY = "Spicy";
-    public static final String COLUMN_WEBSITE = "Website";
+
+    public static final String COLUMN_KEY = "_Key";
+    public static final String COLUMN_RECIPENAME = "_Recipe_Name";
+    public static final String COLUMN_MAININGREDIENT = "_Main_Ingredient_1";
+    public static final String COLUMN_COOKTIME = "_Cook_Time";
+    public static final String COLUMN_SPICY = "_Spicy";
+    public static final String COLUMN_WEBSITE = "_Website";
 
 
     //Constructor
@@ -42,8 +44,8 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         //               all columnname + datatype go into the declaration above with commas in between
 
         //Note to self: may need to add a primary key integer column at the front
-        String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_RECIPENAME +
-                " TEXT PRIMARY KEY AUTOINCREMENT, " + COLUMN_MAININGREDIENT + " TEXT, " +
+        String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_KEY + " INTEGER PRIMARY KEY " +
+                "AUTOINCREMENT, " + COLUMN_RECIPENAME + " TEXT, " + COLUMN_MAININGREDIENT + " TEXT, " +
                 COLUMN_COOKTIME + " INTEGER, " + COLUMN_SPICY + " TEXT, " + COLUMN_WEBSITE + " TEXT)";
         db.execSQL(CREATE_TABLE);
     }
@@ -64,6 +66,7 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
 
         //Contentvalues object is a vehicle for putting the Recipe object's data into the table
         ContentValues values = new ContentValues();
+        values.put(COLUMN_KEY,recipe.getKey());
         values.put(COLUMN_RECIPENAME, recipe.getRecipe_name());
         values.put(COLUMN_MAININGREDIENT, recipe.getMain_ingredient());
         values.put(COLUMN_COOKTIME, recipe.getCook_time());
@@ -96,11 +99,11 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         //add to the result string and clear the line, then close the cursor/db and return the string
         while (cursor.moveToNext()) {
 
-            String result_0 = cursor.getString(0);
-            int result_2 = cursor.getInt(2);
-            String result_4 = cursor.getString(4);
-            SpannableString temp = new SpannableString( result_0 + " (" + String.valueOf(result_2) +
-                    " minutes)" + "\n" + result_4 + "\n" + "\n");
+            String result_1 = cursor.getString(1);
+            int result_3 = cursor.getInt(3);
+            String result_5 = cursor.getString(5);
+            SpannableString temp = new SpannableString( result_1 + " (" + String.valueOf(result_3) +
+                    " minutes)" + "\n" + result_5 + "\n" + "\n");
 
             ClickableSpan clickableTerms = new ClickableSpan() {
                 @Override
@@ -118,15 +121,15 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
 
             //coding the URL
             int digi = 0;
-            if (String.valueOf(result_2).length() < 10){
+            if (String.valueOf(result_3).length() < 10){
                 digi = 1;
             } else {
                 digi = 2;
             }
-            int startpos = result_0.length() + 2 + digi + 10;
-            int endpos = startpos+result_4.length();
+            int startpos = result_1.length() + 2 + digi + 10;
+            int endpos = startpos+result_5.length();
 
-            temp.setSpan(new URLSpan(result_4), startpos, endpos, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            temp.setSpan(new URLSpan(result_5), startpos, endpos, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             temp.setSpan(clickableTerms, startpos, endpos, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             result.append(temp);

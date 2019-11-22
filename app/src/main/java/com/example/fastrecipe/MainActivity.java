@@ -84,16 +84,16 @@ public class MainActivity extends AppCompatActivity {
 
                 //Read the data
                 Recipe r1 = new Recipe();
-                r1.setRecipe_name(tokens[0]);
-                r1.setMain_ingredient(tokens[1]);
-                if(tokens[2].length()>0){      //don't process blank int, string ok
-                    r1.setCook_time(Integer.parseInt(tokens[2]));
+                r1.setRecipe_name(tokens[1]);
+                r1.setMain_ingredient(tokens[2]);
+                if(tokens[3].length()>0){      //don't process blank int, string ok
+                    r1.setCook_time(Integer.parseInt(tokens[3]));
                 } else {
                     r1.setCook_time(0);
                 }
-                r1.setSpicy(tokens[3]);
+                r1.setSpicy(tokens[4]);
                 if(tokens.length >= 4){       //don't process if last entry is blank (won't happen)
-                    r1.setWebsite(tokens[4]);
+                    r1.setWebsite(tokens[5]);
                 }
                 recipes.addHandler(r1);
 

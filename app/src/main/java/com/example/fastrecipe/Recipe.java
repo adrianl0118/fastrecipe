@@ -15,6 +15,7 @@ import xdroid.toaster.Toaster;
 //Class for the records of our recipe ArrayList, to be preloaded at runtime from a CSV file
 //This enables us to store a motley assortment of datatypes in the ArrayList
 class Recipe {
+    private int key;
     private String recipe_name;
     private String main_ingredient;
     private int cook_time;
@@ -59,6 +60,14 @@ class Recipe {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 
     @Override
