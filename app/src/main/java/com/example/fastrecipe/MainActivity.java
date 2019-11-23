@@ -112,9 +112,13 @@ public class MainActivity extends AppCompatActivity {
     //method set to on-click of "get recipes" button in xml -- Spannable strings for URLs
     public void getRecipes(View view){
 
+        //Get data from spinners
+        String ingredient = i_spinner.getSelectedItem().toString();
+        String cooktime = t_spinner.getSelectedItem().toString();
+
         //display text (loadHandler()) does all of the complex spannable string assembly in RecipeDBHandler.class
         RecipeDBHandler recipes = new RecipeDBHandler(this, null, null, 1);
-        show.setText(recipes.loadHandler());
+        show.setText(recipes.loadHandler(ingredient, cooktime));
 
         //set URLs to active
         show.setMovementMethod(LinkMovementMethod.getInstance());
