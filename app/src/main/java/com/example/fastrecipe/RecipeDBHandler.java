@@ -81,14 +81,13 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    //show a datapoint
+    //show datap records that meet two criteria
     public SpannableStringBuilder loadHandler(String ingredient, int cooktime) {
 
         //the string where the data will be captured
         SpannableStringBuilder result = new SpannableStringBuilder("");
 
         //table name identifier string to feed into the SQLiteDatabase query
-        //THIS STATEMENT NEEDS TO BE UPDATED TO QUERY    eg    String query = "Select * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = " + "'" + studentname + "'"
         String query = "Select*FROM " + TABLE_NAME + " WHERE " + COLUMN_MAININGREDIENT + " = " + ingredient +
                 " INTERSECT Select*FROM" + TABLE_NAME + " WHERE " + COLUMN_COOKTIME + " = " +
                 Integer.toString(cooktime);
