@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Get data from spinners
         String ingredient = i_spinner.getSelectedItem().toString();
-        String cooktime = t_spinner.getSelectedItem().toString();
+        int cooktime = (int) t_spinner.getSelectedItem();
 
         //display text (loadHandler()) does all of the complex spannable string assembly in RecipeDBHandler.class
         RecipeDBHandler recipes = new RecipeDBHandler(this, null, null, 1);
