@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         //display text (loadHandler()) does all of the complex spannable string assembly in RecipeDBHandler.class
         RecipeDBHandler recipes = new RecipeDBHandler(this, null, null, 1);
-        show.setText(recipes.findHandler(ingredient, cooktime));
+        show.setText(recipes.searchHandler(ingredient, cooktime));
 
         //set URLs to active
         show.setMovementMethod(LinkMovementMethod.getInstance());
