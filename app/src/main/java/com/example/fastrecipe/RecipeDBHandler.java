@@ -12,6 +12,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.view.View;
 
 import xdroid.toaster.Toaster;
@@ -65,6 +66,8 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
     //Add a data record to the SQLite data table
     public void addHandler(Recipe recipe) {
 
+        Log.d("addHandler","Adding: "+recipe.toString());
+
         //Contentvalues object is a vehicle for putting the Recipe object's data into the table
         ContentValues values = new ContentValues();
         values.put(COLUMN_KEY,recipe.getKey());
@@ -79,10 +82,12 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         db.close();
+
+        Log.d("addHandler", "Added: "+recipe.toString());
     }
 
-    //show datap records that meet two criteria
-    public SpannableStringBuilder loadHandler(String ingredient, int cooktime) {
+    //show data records that meet two criteria
+    public SpannableStringBuilder findHandler(String ingredient, int cooktime) {
 
         //the string where the data will be captured
         SpannableStringBuilder result = new SpannableStringBuilder("");

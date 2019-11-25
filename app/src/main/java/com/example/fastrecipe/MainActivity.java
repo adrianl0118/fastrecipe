@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
                 //Read the data
                 Recipe r1 = new Recipe();
-                r1.setKey(Integer.parseInt(tokens[0]));
                 r1.setRecipe_name(tokens[1]);
                 r1.setMain_ingredient(tokens[2]);
                 if(tokens[3].length()>0){      //don't process blank int, string ok
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         //display text (loadHandler()) does all of the complex spannable string assembly in RecipeDBHandler.class
         RecipeDBHandler recipes = new RecipeDBHandler(this, null, null, 1);
-        show.setText(recipes.loadHandler(ingredient, cooktime));
+        show.setText(recipes.findHandler(ingredient, cooktime));
 
         //set URLs to active
         show.setMovementMethod(LinkMovementMethod.getInstance());
