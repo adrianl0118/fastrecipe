@@ -70,7 +70,7 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
 
         //Contentvalues object is a vehicle for putting the Recipe object's data into the table
         ContentValues values = new ContentValues();
-        values.put(COLUMN_KEY,recipe.getKey());
+
         values.put(COLUMN_RECIPENAME, recipe.getRecipe_name());
         values.put(COLUMN_MAININGREDIENT, recipe.getMain_ingredient());
         values.put(COLUMN_COOKTIME, recipe.getCook_time());
