@@ -21,7 +21,7 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
 
     //Information about the database and its columns
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "RecipeDB.db";
+    private static final String DATABASE_NAME = "NULL";
     public static final String TABLE_NAME = "Recipes";
 
     public static final String COLUMN_KEY = "_Key";
@@ -93,9 +93,11 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         SpannableStringBuilder result = new SpannableStringBuilder("");
 
         //table name identifier string to feed into the SQLiteDatabase query
-        String query = "Select * FROM " + TABLE_NAME + " WHERE " + COLUMN_MAININGREDIENT + " = '" + ingredient +
+        String query = "SELECT DISTINCT * FROM " + TABLE_NAME + " " +
+                "WHERE " + COLUMN_MAININGREDIENT + " = '" + ingredient +
                 "' AND " + COLUMN_COOKTIME + " BETWEEN '" + Integer.toString(cooktime-5) + "' AND '" +
-                Integer.toString(cooktime+5)+"'";
+                Integer.toString(cooktime+5)+
+                "' ORDER BY " + COLUMN_COOKTIME;
 
         //SQLiteDatabase object (writable DB) will query based on the table name identifier
         //returns a cursor to the row in the SQLite table we are interested in
@@ -106,6 +108,8 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         //also grab coinciding information in following columns and append into a string
         //add to the result string and clear the line, then close the cursor/db and return the string
         while (cursor.moveToNext()) {
+
+            Log.d("searchHandler","Looking at "+cursor.getString(1));
 
             String result_1 = cursor.getString(1);
             int result_3 = cursor.getInt(3);
