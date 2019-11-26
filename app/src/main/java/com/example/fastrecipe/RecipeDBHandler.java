@@ -21,6 +21,8 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
 
     //Information about the database and its columns
     private static final int DATABASE_VERSION = 1;
+
+    //Making name null will cause database to delete at termination
     private static final String DATABASE_NAME = "NULL";
     public static final String TABLE_NAME = "Recipes";
 
@@ -153,4 +155,9 @@ public class RecipeDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
+
+    public static void deleteDatabase(Context mContext){
+
+        mContext.deleteDatabase(DATABASE_NAME);
+    }
 }

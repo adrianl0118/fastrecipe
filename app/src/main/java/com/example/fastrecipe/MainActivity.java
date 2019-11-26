@@ -1,5 +1,6 @@
 package com.example.fastrecipe;
 
+import androidx.annotation.CallSuper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
@@ -122,5 +123,15 @@ public class MainActivity extends AppCompatActivity {
         //set URLs to active
         show.setMovementMethod(LinkMovementMethod.getInstance());
         show.setHighlightColor(Color.TRANSPARENT);
+    }
+
+    @Override
+    protected void onStop(){
+
+        //Delete the database
+        RecipeDBHandler console = new RecipeDBHandler(this,null,null,1);
+        console.deleteDatabase(this);
+
+        super.onStop();
     }
 }
