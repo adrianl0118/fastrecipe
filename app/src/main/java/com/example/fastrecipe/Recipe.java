@@ -1,19 +1,14 @@
 package com.example.fastrecipe;
 
-import android.content.Context;
-import android.content.Intent;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.view.View;
-import android.widget.Toast;
 
 import xdroid.toaster.Toaster;
 
-//Class for the records of our recipe ArrayList, to be preloaded at runtime from a CSV file
-//This enables us to store a motley assortment of datatypes in the ArrayList
 class Recipe {
     private int key;
     private String recipe_name;
@@ -81,14 +76,7 @@ class Recipe {
                 '}';
     }
 
-    //UNUSED: This method would be called if the recipe data was read into a runtime data structure like an arraylist
-    //it is called on Recipe objects and builds a presentable URL-encoded Spannable String
-
-    //However, in this version the RecipeDBHandler will execute both the querying and the presentation of data
     public SpannableString toRecord(){
-
-        //Return a Spannablestring with recipe information (presentation format) and a hyperlink URL
-        //Use a Spannablestring in which segments can be made into URLs
 
         SpannableString r_info = new SpannableString(recipe_name + " (" + cook_time + " minutes)" +
                 "\n" + website + "\n");
@@ -97,7 +85,6 @@ class Recipe {
             @Override
             public void onClick(View textView) {
 
-                //Show toast, transient message to the viewer when the link is clicked
                 Toaster.toast("YEAHHH!");
             }
             @Override
@@ -107,7 +94,6 @@ class Recipe {
             }
         };
 
-        //calculate start and end position of URL, set into Spannablestring
         int temp = 0;
         if (getCook_time() < 10){
             temp = 1;
@@ -117,7 +103,6 @@ class Recipe {
         int startpos = recipe_name.length()+ 2 + temp + 10;
         int endpos = startpos+website.length();
 
-        //attach URL
         String url = getWebsite();
 
         r_info.setSpan(new URLSpan(url), startpos, endpos, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
